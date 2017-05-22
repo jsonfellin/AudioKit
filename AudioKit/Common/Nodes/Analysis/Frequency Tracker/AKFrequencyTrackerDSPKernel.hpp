@@ -3,7 +3,7 @@
 //  AudioKit
 //
 //  Created by Aurelius Prochazka, revision history on Github.
-//  Copyright (c) 2017 Aurelius Prochazka. All rights reserved.
+//  Copyright © 2017 Aurelius Prochazka. All rights reserved.
 //
 
 #pragma once
@@ -28,7 +28,6 @@ public:
         AKSoundpipeKernel::init(_channels, _sampleRate);
         sp_ptrack_create(&ptrack);
         sp_ptrack_init(sp, ptrack, hopSize, peakCount);
-
     }
     
     void start() {
@@ -93,7 +92,7 @@ private:
     int hopSize = 4096;
     int peakCount = 20;
 
-    sp_ptrack *ptrack;
+    sp_ptrack *ptrack = nullptr;
 
 public:
     float trackedAmplitude = 0.0;
