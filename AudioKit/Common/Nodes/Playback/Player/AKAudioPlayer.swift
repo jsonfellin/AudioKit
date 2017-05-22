@@ -32,6 +32,10 @@ open class AKAudioPlayer: AKNode, AKToggleable {
     /// (will not as long as loop is on)
     open var completionHandler: AKCallback?
     
+    /// Will be triggered when player re-starts a loop
+    /// (only when looping is set to true)
+    open var startLoopHandler: AKCallback?
+    
     /// Boolean indicating whether or not to loop the playback
     open var looping: Bool = false
     
@@ -477,6 +481,7 @@ open class AKAudioPlayer: AKNode, AKToggleable {
         if playing {
             if looping {
                 scheduleBuffer()
+                self.startLoopHandler?()
             } else {
                 stop()
                 self.completionHandler?()
